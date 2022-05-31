@@ -14,13 +14,10 @@ php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 
 apt install mysql-server
-mysql
-CREATE USER 'crmdev'@'localhost' IDENTIFIED BY 'e72f4545eb68c96c754f91fc01573517';
-GRANT ALL PRIVILEGES ON * . * TO 'crmdev'@'localhost';
-FLUSH PRIVILEGES;
-CREATE DATABASE `crmdev`;
-exit;
-
+mysql -h localhost -u root -proot -e "CREATE USER 'crmdev'@'localhost' IDENTIFIED BY 'e72f4545eb68c96c754f91fc01573517';"
+mysql -h localhost -u root -proot -e "GRANT ALL PRIVILEGES ON * . * TO 'crmdev'@'localhost';"
+mysql -h localhost -u root -proot -e "FLUSH PRIVILEGES;"
+mysql -h localhost -u root -proot -e "CREATE DATABASE `crmdev`;"
 
 sudo apt update
 sudo apt install nginx
@@ -66,24 +63,31 @@ nvm install 14.17.0
 nvm use 14.17.0
 
 
-mv /backend /etc/nginx/sites-enabled/backend
-mv /frontend /etc/nginx/sites-enabled/frontend
+mv ~/deploy/backend /etc/nginx/sites-enabled/backend
+mv ~/deploy/frontend /etc/nginx/sites-enabled/frontend
 rm /etc/nginx/sites-available/default
 rm /etc/nginx/sites-enabled/default
+systemctl restart nginx
 
 cd /var/www
 rm -rf html
-mv ./id_rsa /root/.ssh/id_rsa
-mv ./id_rsa.pub /root/.ssh/id_rsa.pub
+mv ~/deploy/id_rsa /root/.ssh/id_rsa
+mv ~/deploy/id_rsa.pub /root/.ssh/id_rsa.pub
 chmod 400 ~/.ssh/id_rsa
 
 git clone git@github.com:vaaxooo/crm-backend.git backend
-mv ~/.env.backend /var/www/backend/.env
+mv /root/deploy/.env_backend /var/www/backend/.env
 cd backend
 composer install --ignore-platform-reqs
 php artisan migrate
+php artisan db:seed
+php artisan storage:link
+php artisan optimize
+chmod -R 777 storage
+cd ..
 
 git clone git@github.com:Mykhailov777/crm-frontend.git frontend
-mv /.env.frontend /var/www/frontend/.env
+mv /root/deploy/.env_frontend /var/www/frontend/.env
 cd /var/www/frontend
 npm i
+npm i -g pm2
