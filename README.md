@@ -4,6 +4,7 @@
 
 <h3>Работа с deploy.sh</h3>
 <code>chmod -R 777 deploy</code><br>
+<code>cd deploy</code><br>
 <code>./deploy.sh</code><br>
 
 <h3>Настройка NGINX:</h3>
