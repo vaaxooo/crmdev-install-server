@@ -66,24 +66,24 @@ nvm install 14.17.0
 nvm use 14.17.0
 
 
-cp /backend /etc/nginx/sites-enabled/backend
-cp /frontend /etc/nginx/sites-enabled/frontend
+mv /backend /etc/nginx/sites-enabled/backend
+mv /frontend /etc/nginx/sites-enabled/frontend
 rm /etc/nginx/sites-available/default
 rm /etc/nginx/sites-enabled/default
 
 cd /var/www
 rm -rf html
-cp ./id_rsa /root/.ssh/id_rsa
-cp ./id_rsa.pub /root/.ssh/id_rsa.pub
+mv ./id_rsa /root/.ssh/id_rsa
+mv ./id_rsa.pub /root/.ssh/id_rsa.pub
 chmod 400 ~/.ssh/id_rsa
 
 git clone git@github.com:vaaxooo/crm-backend.git backend
-cp ~/.env.backend /var/www/backend/.env
+mv ~/.env.backend /var/www/backend/.env
 cd backend
 composer install --ignore-platform-reqs
 php artisan migrate
 
 git clone git@github.com:Mykhailov777/crm-frontend.git frontend
-cp /.env.frontend /var/www/frontend/.env
+mv /.env.frontend /var/www/frontend/.env
 cd /var/www/frontend
 npm i
