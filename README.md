@@ -9,7 +9,7 @@
 
 <h3>Настройка NGINX:</h3>
 <code>cd /etc/nginx/sites-enabled</code><br>
-(Отредактировать 2-а конфигурационных файла (3-я строка) - <b>server_name api-sub.growgold.xyz;</b> (Отредактирова на нужный поддомен))<br>
+(Отредактировать 2-а конфигурационных файла (3-я строка) - <b>server_name api-sub.growgold.xyz;</b>)<br>
 <code>systemctl restart nginx</code><br>
 
 <h3>Запуск фронтенда:</h3>
