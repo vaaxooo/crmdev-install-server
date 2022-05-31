@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  server_name kag1.growgold.xyz;
+  root /var/www/frontend/build;
+
+  location / {
+    try_files $uri /index.html;  
+  }
+}
