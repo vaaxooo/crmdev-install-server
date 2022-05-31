@@ -2,6 +2,10 @@
 
 <b>Пароль на работу с GIT:</b> <code>Zoparu33</code>
 
+<h3>Работа с deploy.sh</h3>
+<code>chmod -R 777 deploy</code><br>
+<code>./deploy.sh</code><br>
+
 <h3>Настройка NGINX:</h3>
 <code>cd /etc/nginx/sites-enabled</code><br>
 (Отредактировать 2-а конфигурационных файла (3-я строка) - server_name api-sub.growgold.xyz; (Отредактирова на нужный поддомен))
