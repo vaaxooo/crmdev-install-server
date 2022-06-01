@@ -1,4 +1,5 @@
-sudo apt update; sudo apt upgrade
+sudo apt update -y
+sudo apt upgrade -y
 sudo apt install ca-certificates apt-transport-https software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt install php8.0
@@ -45,7 +46,8 @@ sudo apt-get install -y erlang-base \
 
 sudo apt-get install rabbitmq-server -y --fix-missing
 
-sudo apt install npm
+
+sudo apt install npm -y
 sudo apt-get install build-essential libssl-dev
 #curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
 sudo apt-get install libpng-dev
