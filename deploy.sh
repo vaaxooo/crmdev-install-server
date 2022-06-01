@@ -1,11 +1,11 @@
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install ca-certificates apt-transport-https software-properties-common
-sudo add-apt-repository ppa:ondrej/php
-sudo apt install php8.0
-apt install php8.0-{bcmath,bz2,gd,intl,mcrypt,mbstring,mysql,xml,xmlrpc,zip}
-sudo apt install php8.0-fpm
-apt-get install php8.0-mysql
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt install php8.0 -y
+apt install php8.0-{bcmath,bz2,gd,intl,mcrypt,mbstring,mysql,xml,xmlrpc,zip} -y
+sudo apt install php8.0-fpm -y
+apt-get install php8.0-mysql -y
 systemctl stop apache2
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -14,21 +14,21 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 
-apt install mysql-server
+apt install mysql-server -y
 mysql -h localhost -u root -proot -e "CREATE USER 'crmdev'@'localhost' IDENTIFIED BY 'e72f4545eb68c96c754f91fc01573517';"
 mysql -h localhost -u root -proot -e "GRANT ALL PRIVILEGES ON * . * TO 'crmdev'@'localhost';"
 mysql -h localhost -u root -proot -e "FLUSH PRIVILEGES;"
 mysql -h localhost -u root -proot -e "CREATE DATABASE crmdev;"
 
-sudo apt update
-sudo apt install nginx
+sudo apt update -y
+sudo apt install nginx -y
 systemctl start nginx
 
 
 curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-sudo apt-get update
-sudo apt-get install redis
+sudo apt-get update -y
+sudo apt-get install redis -y
 
 
 sudo apt-get install curl gnupg apt-transport-https -y
@@ -50,7 +50,7 @@ sudo apt-get install rabbitmq-server -y --fix-missing
 sudo apt install npm -y
 sudo apt-get install build-essential libssl-dev
 #curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
-sudo apt-get install libpng-dev
+sudo apt-get install -y libpng-dev
 
 
 sudo apt-get update
