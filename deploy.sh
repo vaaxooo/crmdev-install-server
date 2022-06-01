@@ -17,7 +17,7 @@ apt install mysql-server
 mysql -h localhost -u root -proot -e "CREATE USER 'crmdev'@'localhost' IDENTIFIED BY 'e72f4545eb68c96c754f91fc01573517';"
 mysql -h localhost -u root -proot -e "GRANT ALL PRIVILEGES ON * . * TO 'crmdev'@'localhost';"
 mysql -h localhost -u root -proot -e "FLUSH PRIVILEGES;"
-mysql -h localhost -u root -proot -e "CREATE DATABASE `crmdev`;"
+mysql -h localhost -u root -proot -e "CREATE DATABASE crmdev;"
 
 sudo apt update
 sudo apt install nginx
@@ -45,9 +45,9 @@ sudo apt-get install -y erlang-base \
 
 sudo apt-get install rabbitmq-server -y --fix-missing
 
-
+sudo apt install npm
 sudo apt-get install build-essential libssl-dev
-curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
+#curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
 sudo apt-get install libpng-dev
 
 
@@ -58,7 +58,7 @@ source ~/.profile
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
+sudo apt-get update
 nvm install 14.17.0
 nvm use 14.17.0
 
@@ -89,5 +89,9 @@ cd ..
 git clone git@github.com:Mykhailov777/crm-frontend.git frontend
 mv /root/deploy/.env_frontend /var/www/frontend/.env
 cd /var/www/frontend
-npm i
-npm i -g pm2
+npm install
+npm rebuild node-sass
+npm install -g pm2
+
+cd /root
+rm -rf deploy
