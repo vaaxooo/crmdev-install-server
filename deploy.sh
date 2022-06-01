@@ -2,10 +2,10 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y ca-certificates apt-transport-https software-properties-common
 sudo add-apt-repository ppa:ondrej/php -y
-sudo apt install php8.0 -y
-apt install php8.0-{bcmath,bz2,gd,intl,mcrypt,mbstring,mysql,xml,xmlrpc,zip} -y
-sudo apt install php8.0-fpm -y
-apt-get install php8.0-mysql -y
+sudo apt install -y php8.0 
+apt install -y php8.0-{bcmath,bz2,gd,intl,mcrypt,mbstring,mysql,xml,xmlrpc,zip}
+sudo apt install -y php8.0-fpm 
+apt-get install -y php8.0-mysql 
 systemctl stop apache2
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -21,7 +21,7 @@ mysql -h localhost -u root -proot -e "FLUSH PRIVILEGES;"
 mysql -h localhost -u root -proot -e "CREATE DATABASE crmdev;"
 
 sudo apt update -y
-sudo apt install nginx -y
+sudo apt install -y nginx 
 systemctl start nginx
 
 
