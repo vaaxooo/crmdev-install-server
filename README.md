@@ -20,6 +20,7 @@
 
 <h3>Изменение и получение данных пользователей:</h3>
 <code>mysql</code><br>
+<code>use crmdev;</code><br>
 <code>select id email, role from users;</code><br>
 <code>update users set role = 'admin' where id = 1;</code><br>
 <code>update users set login = 'Название офиса' where id = 1;</code><br>
